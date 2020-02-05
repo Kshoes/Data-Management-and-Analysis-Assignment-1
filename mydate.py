@@ -26,8 +26,12 @@ def month_num_to_string(month_num):
     return switcher.get(month_num)
 
 def date_to_string(date_list):
-    month = month_num_to_string(date_list[1])
-    return month + " " + str(date_list[2]) + ", " + str(date_list[0])
+    if len(date_list) == 3:     # making this usable for birthday.py
+        month = month_num_to_string(date_list[1])
+        return month + " " + str(date_list[2]) + ", " + str(date_list[0])
+    else:
+        month = month_num_to_string(date_list[0])
+        return month + " " + str(date_list[1])
 
 def dates_to_strings(list_of_date_lists):
     strings = []
@@ -84,11 +88,3 @@ def generate_date(start_year, end_year):
     date.append(day)
     return date
 
-
-
-
-If the year is evenly divisible by 4, go to step 2. Otherwise, go to step 5.
-If the year is evenly divisible by 100, go to step 3. Otherwise, go to step 4.
-If the year is evenly divisible by 400, go to step 4. Otherwise, go to step 5.
-The year is a leap year (it has 366 days).
-The year is not a leap year (it has 365 days).
